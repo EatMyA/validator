@@ -1,0 +1,3 @@
+info1@mail.ru
+info2@mail.ru
+info3@mail.ru
