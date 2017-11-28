@@ -1,0 +1,37 @@
+
+def search():
+    inputfil = raw_input("Type the path of file containing a list of emails: ")
+    with open(inputfil) as inputfile:
+        for line in inputfile:
+            results.append(line.strip())
+    count = 0
+    for i in results:
+        is_valid = validate_email(i,verify=True)
+        count += 1
+        if str(is_valid).upper() == "TRUE":
+	    stdout.write(GREEN + "[*] FOUND - [" + i + "] "+ BLUE + "{line " + str(count) + "}\n" + END)
+        else:
+            stdout.write(RED + "[!] NOTFD - [" + i + "]" + BLUE + " {line " + str(count) + "}\n" + END)
+
+def single():
+    ema = raw_input("Type the email to search: ")
+    is_valid = validate_email(ema,verify=True)
+    if str(is_valid).upper() == "TRUE":
+        stdout.write(GREEN + "[*] FOUND - [" + ema + "]\n" + END)
+    else:
+	stdout.write(RED + "[!] NOTFD - [" + ema + "]\n" + END)
+
+stdout.write(WHITE + '''
+
+while True:
+    try:
+        ask = raw_input("KKM > ").format(RED, END)
+    	if ask.upper() == "1":
+            search()
+	if ask.upper() == "2":
+            single()
+        if ask.upper() == "E":
+            exit(0) 
+    except:
+        print "\nThank you for use Knock Mail."
+        exit(0)
