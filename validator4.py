@@ -29,19 +29,22 @@ for url in domains:
     for x in common_list:
         try:
             email = x + strip
-            is_valid = validate_email(email, verify=True)
+            is_valid = validate_email(email)
             if is_valid == True:
-                dic[email] = 'Valid'
+                dic[email] = ' '
             elif is_valid == False:
-                dic[email] = 'Not Valid'
+                dic[email] = ' '
         except:
-            dic[email] = 'Error'
+            dic[email] = ' '
 
 with open('output.csv', 'wb') as f:
     w = csv.writer(f)
-    w.writerow(['Email', 'Status'])
+    w.writerow(['Email'])
     w.writerows(dic.items())
+
+
 
 print 'Done!'
 print (datetime.now() - startTime)
-time.sleep(1.5)
+
+
